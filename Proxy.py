@@ -118,6 +118,13 @@ while True:
     # ProxyServer finds a cache hit
     # Send back response to client 
     # ~~~~ INSERT CODE ~~~~
+     # Raise IOError to access the server if no allowed policy is found
+    if message.find("Cache-Control: public") != -1:
+          clientSocket.sendall(cacheData)
+    else:
+        print ("cache is forbidden")
+
+
     # ~~~~ END CODE INSERT ~~~~
     cacheFile.close()
     print ('Sent to the client:')

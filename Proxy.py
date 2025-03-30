@@ -159,10 +159,12 @@ while True:
       # originServerRequestHeader is the second line in the request
       # ~~~~ INSERT CODE ~~~~
        # I don't know whether to send the client's request header directly to the server or let us customize the request header
-      originServerRequestLine = method + " " + url + " " + version
-      originServerRequestHeader += "HOST: " + hostname + "\r\n"
+       
+      url = resource if resource != '/' else '/'
+      originServerRequest = f"{method} {url} {version}"
+      originServerRequestHeader = f"Host: {hostname}\r\n"
       originServerRequestHeader += "Accept: */*\r\n"
-      originServerRequestHeader += "Connection: keep-alive"
+      originServerRequestHeader += "Connection: close\r\n"
 
 
       # ~~~~ END CODE INSERT ~~~~

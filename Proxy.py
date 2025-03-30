@@ -159,7 +159,7 @@ while True:
         # raise an error, make request to origin server
         raise IOError()
 
-    clientSocket.sendall(cacheData)
+    clientSocket.sendall(''.join(cacheData).encode())
     # ~~~~ END CODE INSERT ~~~~
     cacheFile.close()
     print ('Sent to the client:')

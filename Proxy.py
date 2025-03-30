@@ -153,8 +153,11 @@ while True:
       if line.startswith('cache-control'):
         max_age = find_max_age(text=line)
       if line.startswith('date'):
-        cache_date = 
-
+        cache_date = parse_date(date_string=line)
+    if cache_date is not None and max_age is not None:
+      if not is_valid_cache(cache_date, max_age):
+        # raise an error, make request to origin server
+        raise IOError()
 
     clientSocket.sendall(cacheData)
     # ~~~~ END CODE INSERT ~~~~

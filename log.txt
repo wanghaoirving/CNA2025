@@ -1,3 +1,21 @@
+commit 792c231adb94175cfda457dd2083d6f377c07a53
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:34:38 2025 +0000
+
+    Check for 'Cache-Control: public' headerSend cached data if allowedDeny cache access with message when forbidden
+
+commit b6239931e9615c71bc9af541b8d80e26fab16989
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:29:34 2025 +0000
+
+    wrong lane
+
+commit da3bda78beb153b15e845123be6b751405dd2767
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:23:16 2025 +0000
+
+    Blocking accept() to receive incoming client connections Return a new socket object and a tuple of the client addressRead up to BUFFER_SIZE (1MB) from the client socket​​Store the raw request data for further processing
+
 commit 5d38953efedf37c569c344960dfb6c1a60c6ecc5
 Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
 Date:   Sun Mar 30 06:17:56 2025 +0000

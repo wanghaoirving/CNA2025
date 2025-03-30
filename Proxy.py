@@ -4,7 +4,7 @@ import sys
 import os
 import argparse
 import re
-
+from urllib.parse import urlparse
 # 1MB buffer size
 BUFFER_SIZE = 1000000
 
@@ -144,6 +144,9 @@ while True:
       address = socket.gethostbyname(hostname)
       # Connect to the origin server
       # ~~~~ INSERT CODE ~~~~
+      parsed = urlparse('http://' + URI)
+
+      port = parsed.port if parsed.port else 80
       originServerSocket.connect((hostname, port))
       # ~~~~ END CODE INSERT ~~~~
       print ('Connected to origin Server')

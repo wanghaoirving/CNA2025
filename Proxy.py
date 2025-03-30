@@ -5,6 +5,7 @@ import os
 import argparse
 import re
 from urllib.parse import urlparse
+from datetime import datetime, timezone, timedelta
 # 1MB buffer size
 BUFFER_SIZE = 1000000
 
@@ -15,6 +16,32 @@ parser.add_argument('port', help='the port number of the proxy server')
 args = parser.parse_args()
 proxyHost = args.hostname
 proxyPort = int(args.port)
+
+
+# Helper functions
+def find_max_age(text:str) -> None | int:
+    # Use regular expressions to match the max-age=xxx pattern
+    pattern = r"max-age=(\d+)[\s,;]?"
+    match = re.search(pattern, text)
+    
+    if match:
+        return int(match.group(0))
+    else:
+        return None
+
+def parse_date(date_string:str) -> datetime:
+  try:
+    format = "%a, %d %b %Y %H:%M:%S %Z"
+    res = datetime.strptime(date_string, format).replace(tzinfo=timezone.utc)
+    return res
+  except:
+    return None
+
+def is_valid_cache(date:datetime, max_age:int):
+  expire_date = date + timedelta(seconds=max_age)
+  current_date = datetime.now(timezone.utc)
+  return current_date > expire_date
+
 
 # Create a server socket, bind it to a port and start listening
 try:
@@ -118,13 +145,16 @@ while True:
     # ProxyServer finds a cache hit
     # Send back response to client 
     # ~~~~ INSERT CODE ~~~~
-    # Test if cache is valid
-    # 
-    # 
-    if message.find("Cache-Control: public") != -1:
-          clientSocket.sendall(cacheData)
-    else:
-        print ("cache is forbidden")
+    # Test if cache is valid: cache-control: max-age=xxx
+    max_age = None
+    cache_date = None
+    for line in cacheData:
+      line = line.lower()
+      if line.startswith('cache-control'):
+        max_age = find_max_age(text=line)
+      if line.startswith('date'):
+        cache_date = 
+
 
     clientSocket.sendall(cacheData)
     # ~~~~ END CODE INSERT ~~~~

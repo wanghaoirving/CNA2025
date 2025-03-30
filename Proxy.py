@@ -256,6 +256,7 @@ while True:
       
       if not cache_response:
         try:
+          clientSocket.shutdown(socket.SHUT_WR)
           clientSocket.close()
         except:
           print ('Failed to close client socket')

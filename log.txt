@@ -1,3 +1,15 @@
+commit 5d38953efedf37c569c344960dfb6c1a60c6ecc5
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:17:56 2025 +0000
+
+    Blocking accept() to receive incoming client connections Return a new socket object and a tuple of the client addressRead up to BUFFER_SIZE (1MB) from the client socket​​Store the raw request data for further processing
+
+commit da2dbc43f5855bcfba739c4ea15139b4bef9ec41
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:03:56 2025 +0000
+
+    Blocking accept() to receive incoming client connections Return a new socket object and a tuple of the client addressRead up to BUFFER_SIZE (1MB) from the client socket​​Store the raw request data for further processing
+
 commit eae38d2f9ba60c759b2e1236c6bacf9fa5a17f1c
 Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
 Date:   Sun Mar 30 05:46:18 2025 +0000

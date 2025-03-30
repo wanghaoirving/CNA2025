@@ -55,6 +55,8 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
+    clientSocket, client_addr = server_sock.accept()#implement client connection acceptance
+    clientRequest = clientSocket.recv(BUFFER_SIZE)#receive raw HTTP request data 1mb
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
   except:

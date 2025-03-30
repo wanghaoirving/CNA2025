@@ -230,13 +230,29 @@ while True:
       clientSocket.sendall(data)
       
       # Test if the response shoud be cache
-      # http status code != 404/301/302
       cache_response = True
-      statusLine = data.decode().split('\r\n')[0]
+      responseLines = data.decode().split('\r\n')
+      
+      
+      # Test Cache-Control: public | max-age
+      for line in responseLines:
+        line = line.strip().lower()
+        if line.startswith('cache-control'):
+          if line.find('public') != -1 or line.find('max-age') != -1:
+            cache_response = True
+            break
+        if line == '':
+          break
+        
+      # http status code != 404/301/302
+      statusLine = responseLines[0]
       if statusLine.find('404') != -1 or \
         statusLine.find('301') != -1 or \
           statusLine.find('302') != -1:
             cache_response = False
+      
+
+          
       
       if not cache_response:
         try:

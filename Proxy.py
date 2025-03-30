@@ -161,8 +161,8 @@ while True:
        # I don't know whether to send the client's request header directly to the server or let us customize the request header
       originServerRequest = f"{method} {resource} {version}"
       originServerRequestHeader = f"Host: {hostname}\r\n"
-      originServerRequestHeader += "Accept: */*\r\n"
-      originServerRequestHeader += "Connection: close\r\n"
+      # originServerRequestHeader += "Accept: */*\r\n"
+      # originServerRequestHeader += "Connection: close\r\n"
 
 
       # ~~~~ END CODE INSERT ~~~~

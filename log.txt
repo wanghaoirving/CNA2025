@@ -1,3 +1,28 @@
+commit f81da56e40745c91b0ff1ea1cd008f46b074e3fa
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:46:19 2025 +0000
+
+    save the data
+
+commit baf1f7a6c94c363edbac5890ca1ca0b04c7157da
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:44:58 2025 +0000
+
+    Relay raw HTTP request to origin serverUses sendall() for complete transmissionead response data with 1MB buffer limit Store raw response for client forwarding
+
+commit be9a13b86e26a823e91171452e24bafb112d037a
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:41:40 2025 +0000
+
+     # I don't know whether to send the client's request header directly to the server or let us customize the request header
+
+commit c0ac6656638582150d544ebe710276767c65c46d
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:38:01 2025 +0000
+
+    Create new TCP socket for upstream communication
+    Connect to origin server's hostname:port
+
 commit 77fff7e5439f4396d9d9ae520c2b554b8125dddd
 Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
 Date:   Sun Mar 30 06:37:44 2025 +0000

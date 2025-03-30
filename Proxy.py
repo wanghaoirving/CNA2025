@@ -21,11 +21,11 @@ proxyPort = int(args.port)
 # Helper functions
 def find_max_age(text:str) -> None | int:
     # Use regular expressions to match the max-age=xxx pattern
-    pattern = r"max-age=(\d+)[\s,;]?"
+    pattern = r"max-age=(\d+)[\s,;]?[\r\n]?"
     match = re.search(pattern, text)
     
     if match:
-        return int(match.group(0))
+        return int(match.group(1))
     else:
         return None
 
@@ -154,6 +154,8 @@ while True:
         max_age = find_max_age(text=line)
       if line.startswith('date'):
         cache_date = parse_date(date_string=line)
+      
+    print('>>>> ', cache_date, max_age)
     if cache_date is not None and max_age is not None:
       if not is_valid_cache(cache_date, max_age):
         # raise an error, make request to origin server
@@ -164,7 +166,8 @@ while True:
     cacheFile.close()
     print ('Sent to the client:')
     print ('> ' + ''.join(cacheData))
-  except:
+  except Exception as e:
+    print(e)
     # cache miss.  Get resource from origin server
     originServerSocket = None
     # Create a socket to connect to origin server

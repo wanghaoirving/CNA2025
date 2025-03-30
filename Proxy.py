@@ -238,6 +238,7 @@ while True:
       for line in responseLines:
         line = line.strip().lower()
         if line.startswith('cache-control'):
+          cache_response = False
           if line.find('public') != -1 or line.find('max-age') != -1:
             cache_response = True
             break

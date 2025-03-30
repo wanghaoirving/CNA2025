@@ -17,7 +17,7 @@ proxyHost = args.hostname
 proxyPort = int(args.port)
 
 # Create a server socket, bind it to a port and start listening
-trytt:
+try:
   # Create a server socket.
   # ~~~~ INSERT CODE ~~~~
   server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

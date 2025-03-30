@@ -31,6 +31,7 @@ def find_max_age(text:str) -> None | int:
 
 def parse_date(date_string:str) -> datetime:
   try:
+    date_string = date_string.split(':', 1)[1].strip()
     format = "%a, %d %b %Y %H:%M:%S %Z"
     res = datetime.strptime(date_string, format).replace(tzinfo=timezone.utc)
     return res
@@ -40,7 +41,7 @@ def parse_date(date_string:str) -> datetime:
 def is_valid_cache(date:datetime, max_age:int):
   expire_date = date + timedelta(seconds=max_age)
   current_date = datetime.now(timezone.utc)
-  return current_date > expire_date
+  return current_date <= expire_date
 
 
 # Create a server socket, bind it to a port and start listening
@@ -155,7 +156,6 @@ while True:
       if line.startswith('date'):
         cache_date = parse_date(date_string=line)
       
-    print('>>>> ', cache_date, max_age)
     if cache_date is not None and max_age is not None:
       if not is_valid_cache(cache_date, max_age):
         # raise an error, make request to origin server
@@ -166,8 +166,7 @@ while True:
     cacheFile.close()
     print ('Sent to the client:')
     print ('> ' + ''.join(cacheData))
-  except Exception as e:
-    print(e)
+  except:
     # cache miss.  Get resource from origin server
     originServerSocket = None
     # Create a socket to connect to origin server
@@ -258,7 +257,6 @@ while True:
       # Save origin server response in the cache file
       # ~~~~ INSERT CODE ~~~~
       cacheFile.write(data)
-
       # ~~~~ END CODE INSERT ~~~~
       cacheFile.close()
       print ('cache file closed')

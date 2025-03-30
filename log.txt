@@ -1,3 +1,17 @@
+commit 77fff7e5439f4396d9d9ae520c2b554b8125dddd
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:37:44 2025 +0000
+
+    Create new TCP socket for upstream communicationConnect to origin server's hostname:port
+
+commit c75cf67777421e26ff621bd85adb7f7df1ac98dc
+Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
+Date:   Sun Mar 30 06:35:08 2025 +0000
+
+    Check for 'Cache-Control: public' header
+    Send cached data if allowed
+    Deny cache access with message when forbidden
+
 commit 792c231adb94175cfda457dd2083d6f377c07a53
 Author: wanghaoirving <69133018+wanghaoirving@users.noreply.github.com>
 Date:   Sun Mar 30 06:34:38 2025 +0000
